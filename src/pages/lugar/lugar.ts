@@ -21,7 +21,7 @@ export class LugarPage {
   lugar: any = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public lugaresService: LugaresService) {
-    this.nombreLugar = navParams.get('lugar');
+    this.lugar = navParams.get('lugar');
   }
 
   ionViewDidLoad() {
@@ -37,8 +37,12 @@ export class LugarPage {
   }
 
   guardarLugar() {
-    this.lugar.id = Date.now();
+    if (!this.lugar.id) {
+      this.lugar.id = Date.now();
+    }
     this.lugaresService.createLugar(this.lugar);
+    alert('Lugar guardado con éxito');
+    this.navCtrl.pop();
     console.log(this.lugar);
   }
 
