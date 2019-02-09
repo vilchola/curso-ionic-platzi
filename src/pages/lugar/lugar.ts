@@ -21,7 +21,7 @@ export class LugarPage {
   lugar: any = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public lugaresService: LugaresService) {
-    this.lugar = navParams.get('lugar');
+    this.lugar = navParams.data.lugar || {};
   }
 
   ionViewDidLoad() {
